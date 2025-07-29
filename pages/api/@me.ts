@@ -73,7 +73,7 @@ export async function handler(
 		}
 	};
 
-	await getRegistry((req.headers.host as string))
+	// await getRegistry((req.headers.host as string))
 	res.status(200).json({ success: true, user, workspaces: roles })
 	await prisma.user.update({
 		where: {

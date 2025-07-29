@@ -10,14 +10,27 @@ export async function getUsername(userId: number | bigint) {
 	if (cachedUsername) {
 		return cachedUsername as string;
 	} else {
-		const username = await getRobloxUsername(Number(userId));
-		usernames.set(Number(userId), username);
-		return username as string;
+		try {
+			const username = await getRobloxUsername(Number(userId));
+			usernames.set(Number(userId), username);
+			return username as string;
+		} catch (error) {
+			console.error(`Failed to get username for ${userId}, using fallback`);
+			// Return a fallback username
+			return `User${userId}`;
+		}
 	}
 }
 
 export async function getThumbnail(userId: number | bigint): Promise<string> {
-  return `/api/workspace/[id]/avatar/${userId}`;
+  try {
+    const thumbnail = await getRobloxThumbnail(Number(userId));
+    return thumbnail || `https://www.roblox.com/headshot-thumbnail/image?userId=${userId}&size=420x420&format=png`;
+  } catch (error) {
+    console.error(`Failed to get thumbnail for ${userId}, using fallback`);
+    // Return a fallback thumbnail URL
+    return `https://www.roblox.com/headshot-thumbnail/image?userId=${userId}&size=420x420&format=png`;
+  }
 }
 
 export async function getDisplayName(userId: number | bigint): Promise<string> {
@@ -25,9 +38,20 @@ export async function getDisplayName(userId: number | bigint): Promise<string> {
 	if (cachedDisplayName) {
 		return cachedDisplayName as string;
 	} else {
-		const displayName = await getRobloxDisplayName(Number(userId));
-		displaynames.set(Number(userId), displayName);
-		return displayName as string;
+		try {
+			const displayName = await getRobloxDisplayName(Number(userId));
+			displaynames.set(Number(userId), displayName);
+			return displayName as string;
+		} catch (error) {
+			console.error(`Failed to get display name for ${userId}, using fallback`);
+			// Try to get username as fallback
+			try {
+				const username = await getUsername(userId);
+				return username;
+			} catch {
+				return `User${userId}`;
+			}
+		}
 	}
 }
 
