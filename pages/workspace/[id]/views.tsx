@@ -256,23 +256,30 @@ const Views: pageWithLayout<pageProps> = ({ usersInGroup, ranks }) => {
 				/>
 			)
 		},
-		columnHelper.accessor("info", {
+		{
+			id: "user",
 			header: 'User',
-			cell: (row) => {
+			cell: (props: any) => {
+				const user = props.row.original;
 				return (
-					<div className="flex flex-row cursor-pointer" onClick={() => router.push(`/workspace/${router.query.id}/profile/${row.getValue().userId}`)}>
-							<img
-								src={row.getValue().picture!}
+					<div className="flex flex-row cursor-pointer" onClick={() => router.push(`/workspace/${router.query.id}/profile/${user.info.userId}`)}>
+						<img
+							src={user.info.picture!}
 							className="w-10 h-10 rounded-lg object-cover border border-gray-200 dark:border-gray-700"
-							alt={`${row.getValue().username}'s avatar`}
-							/>
-						<p className="leading-5 my-auto px-2 font-semibold dark:text-white">
-							{row.getValue().username} <br />
-						</p>
+							alt={`${user.info.username}'s avatar`}
+						/>
+						<div className="leading-5 my-auto px-2">
+							<p className="font-semibold dark:text-white">
+								{user.info.username}
+							</p>
+							<p className="text-pink-500 text-xs font-medium">
+								{ranks.find(x => x.rank == user.rankID)?.name || "Guest"}
+							</p>
+						</div>
 					</div>
 				);
 			}
-		}),
+		},
 		columnHelper.accessor("sessions", {
 			header: 'Sessions claimed',
 			cell: (row) => {

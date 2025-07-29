@@ -71,19 +71,19 @@
   <h2>Quicklinks</h2>
   <ul>
     <li>
-      Don't know how to install? –– <a href="https://docs.planetaryapp.cloud">Visit our documentation!</a>
+      Don't know how to install? –– <a href="#">Visit our documentation!</a>
     </li>
     <li>
       🐛 Bugs? –– <a href="https://discord.gg/planetorbit">Get support and let us know here!</a>
     </li>
     <li>
-      ✨ Suggestions? –– <a href="https://feedback.planetaryapp.cloud/">View our Upcoming Features and Suggest your own!</a>
+      ✨ Suggestions? –– <a href="#">View our Upcoming Features and Suggest your own!</a>
     </li>
   </ul>
 
   <h2>🚀 One-Click Deploy</h2>
   <p>The fastest way to get started with Orbit is by deploying it to <strong>Vercel</strong> in just one click:</p>
-  <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FPlanetaryOrbit%2Forbit&env=SESSION_SECRET,DATABASE_URL&build-command=prisma%20db%20push%20%26%26%20next%20build">
+  <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fbryan1101023%2F2910&env=SESSION_SECRET,DATABASE_URL&build-command=prisma%20db%20push%20%26%26%20next%20build">
     <img src="https://vercel.com/button" alt="Deploy with Vercel" />
   </a>
   <p><strong>Required environment variables:</strong></p>

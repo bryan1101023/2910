@@ -59,6 +59,10 @@ const Book: FC<Props> = ({ userBook, onRefetch }) => {
 				return <IconX className="w-5 h-5 text-red-500" />;
 			case "termination":
 				return <IconX className="w-5 h-5 text-red-500" />;
+			case "appeal_accepted":
+				return <IconCheck className="w-5 h-5 text-green-500" />;
+			case "appeal_declined":
+				return <IconX className="w-5 h-5 text-red-500" />;
 			default:
 				return <IconPencil className="w-5 h-5 text-gray-500" />;
 		}
@@ -96,6 +100,8 @@ const Book: FC<Props> = ({ userBook, onRefetch }) => {
 									<option value="demotion">Demotion</option>
 								<option value="suspension">Suspension</option>
 								<option value="termination">Termination</option>
+								<option value="appeal_accepted">Appeal Accepted</option>
+								<option value="appeal_declined">Appeal Declined</option>
 							</select>
 						</div>
 							<div className="flex items-end">
@@ -181,9 +187,13 @@ const Book: FC<Props> = ({ userBook, onRefetch }) => {
 														entry.type === 'demotion' ? 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400' :
 														entry.type === 'suspension' ? 'bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400' :
 														entry.type === 'termination' ? 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400' :
+														entry.type === 'appeal_accepted' ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400' :
+														entry.type === 'appeal_declined' ? 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400' :
 														'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400'
 													}`}>
-														{entry.type.charAt(0).toUpperCase() + entry.type.slice(1)}
+														{entry.type === 'appeal_accepted' ? 'Appeal Accepted' :
+														 entry.type === 'appeal_declined' ? 'Appeal Declined' :
+														 entry.type.charAt(0).toUpperCase() + entry.type.slice(1)}
 													</span>
 												</div>
 												<time className="text-xs text-gray-500 dark:text-gray-400">

@@ -42,10 +42,9 @@ export async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
     protocol = protocol[0].split(",")[0];
   }
 
-  // use PLANETARY_CLOUD_URL if available, else use VERCEL_URL if available, else use the host
-  const planetaryCloudUrl = process.env.PLANETARY_CLOUD_URL;
-  const vercelUrl = process.env.VERCEL_URL;
-  const host = planetaryCloudUrl || vercelUrl || req.headers.host;
+  // use VERCEL_URL if available, else use the host
+const vercelUrl = process.env.VERCEL_URL;
+const host = vercelUrl || req.headers.host;
 
   let currentUrl = new URL(`${protocol}://${host}`);
   try {

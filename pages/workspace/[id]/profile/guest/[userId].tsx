@@ -208,7 +208,17 @@ const GuestProfile: pageWithLayout<pageProps> = ({ guestUser }) => {
 			case "suspension": return "bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400";
 			case "fire": return "bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400";
 			case "promotion": return "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400";
+			case "appeal_accepted": return "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400";
+			case "appeal_declined": return "bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400";
 			default: return "bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400";
+		}
+	};
+
+	const getLogbookTypeLabel = (type: string) => {
+		switch (type) {
+			case "appeal_accepted": return "Appeal Accepted";
+			case "appeal_declined": return "Appeal Declined";
+			default: return type.charAt(0).toUpperCase() + type.slice(1);
 		}
 	};
 
@@ -307,12 +317,12 @@ const GuestProfile: pageWithLayout<pageProps> = ({ guestUser }) => {
 										<div key={entry.id} className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
 											<div className="flex items-center justify-between mb-2">
 												<span className={`px-2 py-1 text-xs font-medium rounded-full ${getLogbookTypeColor(entry.type)}`}>
-													{entry.type.charAt(0).toUpperCase() + entry.type.slice(1)}
+													{getLogbookTypeLabel(entry.type)}
 												</span>
 												<div className="flex items-center gap-2">
-												<span className="text-xs text-gray-500 dark:text-gray-400">
-													{moment(entry.createdAt).fromNow()}
-												</span>
+													<span className="text-xs text-gray-500 dark:text-gray-400">
+														{moment(entry.createdAt).fromNow()}
+													</span>
 													<button
 														onClick={() => setShowDeleteConfirm(entry.id)}
 														className="p-1 rounded hover:bg-red-100 dark:hover:bg-red-900/20 text-red-500"
@@ -351,7 +361,7 @@ const GuestProfile: pageWithLayout<pageProps> = ({ guestUser }) => {
 								>
 									<div className="flex items-center gap-2">
 										<IconPlus className="w-4 h-4" />
-										New Note
+										Add Note
 									</div>
 								</Button>
 							</div>
@@ -369,24 +379,22 @@ const GuestProfile: pageWithLayout<pageProps> = ({ guestUser }) => {
 									{notes.map((note) => (
 										<div key={note.id} className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
 											<div className="flex items-center justify-between mb-2">
-												<span className="text-sm font-medium text-gray-900 dark:text-white">
-													{note.authorName}
-												</span>
-												<div className="flex items-center gap-2">
 												<span className="text-xs text-gray-500 dark:text-gray-400">
-														{moment(note.createdAt).fromNow()}
+													{moment(note.createdAt).fromNow()}
 												</span>
-													<button
-														onClick={() => setShowDeleteConfirm(note.id)}
-														className="p-1 rounded hover:bg-red-100 dark:hover:bg-red-900/20 text-red-500"
-														title="Delete note"
-													>
-														<IconTrash className="w-4 h-4" />
-													</button>
-												</div>
+												<button
+													onClick={() => setShowDeleteConfirm(note.id)}
+													className="p-1 rounded hover:bg-red-100 dark:hover:bg-red-900/20 text-red-500"
+													title="Delete note"
+												>
+													<IconTrash className="w-4 h-4" />
+												</button>
 											</div>
 											<p className="text-sm text-gray-700 dark:text-gray-300">
 												{note.content}
+											</p>
+											<p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+												By: {note.authorName}
 											</p>
 										</div>
 									))}
@@ -426,6 +434,8 @@ const GuestProfile: pageWithLayout<pageProps> = ({ guestUser }) => {
 									<option value="suspension">Suspension</option>
 									<option value="fire">Fire</option>
 									<option value="promotion">Promotion</option>
+									<option value="appeal_accepted">Appeal Accepted</option>
+									<option value="appeal_declined">Appeal Declined</option>
 								</select>
 							</div>
 							<div>
