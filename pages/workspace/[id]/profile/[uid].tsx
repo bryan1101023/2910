@@ -272,7 +272,7 @@ const Profile: pageWithLayout<pageProps> = ({ notices, timeSpent, timesPlayed, d
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 				{/* Header */}
 				<div className="mb-6">
-					<div className="flex items-center gap-4">
+				<div className="flex items-center gap-4">
 						<button
 							onClick={() => router.back()}
 							className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
@@ -293,8 +293,8 @@ const Profile: pageWithLayout<pageProps> = ({ notices, timeSpent, timesPlayed, d
 				{/* Profile Card */}
 				<div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-6">
 					<div className="flex items-center gap-6">
-						<img
-							src={info.avatar}
+							<img 
+								src={info.avatar} 
 							alt={info.displayName}
 							className="w-24 h-24 rounded-xl object-cover ring-4 ring-white/20 dark:ring-gray-700/50"
 						/>
@@ -312,94 +312,94 @@ const Profile: pageWithLayout<pageProps> = ({ notices, timeSpent, timesPlayed, d
 								<span className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-full">
 									User ID: {user.userid}
 								</span>
-							</div>
 						</div>
 					</div>
 				</div>
+			</div>
 
 				{/* Tabs */}
 				<div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
-					<Tab.Group>
-						<Tab.List className="flex p-1 gap-1 bg-gray-50 dark:bg-gray-700 border-b dark:border-gray-600">
-							<Tab className={({ selected }) =>
-								`flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
-									selected 
+				<Tab.Group>
+					<Tab.List className="flex p-1 gap-1 bg-gray-50 dark:bg-gray-700 border-b dark:border-gray-600">
+						<Tab className={({ selected }) =>
+							`flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
+								selected 
 										? "bg-white dark:bg-gray-800 text-orbit shadow-sm" 
-										: "text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white"
-								}`
-							}>
-								<IconClipboard className="w-4 h-4" />
-								Information
-							</Tab>
-							<Tab className={({ selected }) =>
-								`flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
-									selected 
+									: "text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white"
+							}`
+						}>
+							<IconClipboard className="w-4 h-4" />
+							Information
+						</Tab>
+						<Tab className={({ selected }) =>
+							`flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
+								selected 
 										? "bg-white dark:bg-gray-800 text-orbit shadow-sm" 
-										: "text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white"
-								}`
-							}>
-								<IconHistory className="w-4 h-4" />
-								Activity
-							</Tab>
-							<Tab className={({ selected }) =>
-								`flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
-									selected 
+									: "text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white"
+							}`
+						}>
+							<IconHistory className="w-4 h-4" />
+							Activity
+						</Tab>
+						<Tab className={({ selected }) =>
+							`flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
+								selected 
 										? "bg-white dark:bg-gray-800 text-orbit shadow-sm" 
-										: "text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white"
-								}`
-							}>
-								<IconBook className="w-4 h-4" />
-								Userbook
-							</Tab>
-							<Tab className={({ selected }) =>
-								`flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
-									selected 
+									: "text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white"
+							}`
+						}>
+							<IconBook className="w-4 h-4" />
+							Userbook
+						</Tab>
+						<Tab className={({ selected }) =>
+							`flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
+								selected 
 										? "bg-white dark:bg-gray-800 text-orbit shadow-sm" 
-										: "text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white"
-								}`
-							}>
-								<IconBell className="w-4 h-4" />
-								Notices
-							</Tab>
-						</Tab.List>
-						<Tab.Panels className="p-6 bg-white dark:bg-gray-800 rounded-b-xl">
-							<Tab.Panel>
-								<InformationPanel
-								user={{
-									userid: String(user.userid),
-									username: user.username,
-									displayname: info.displayName,
-									registered: user.registered,
-									birthdayDay: user.birthdayDay,
-									birthdayMonth: user.birthdayMonth,
-								}}
-								isUser={isUser}
-								isAdmin={isAdmin}
-								/>
-							</Tab.Panel>
-							<Tab.Panel>
-								<Activity
-									timeSpent={timeSpent}
-									timesPlayed={timesPlayed}
-									data={data}
-									quotas={quotas}
-									sessionsHosted={sessionsHosted}
-									sessionsAttended={sessionsAttended}
-									avatar={info.avatar}
-									sessions={sessions}
-									notices={notices}
-								/>
-							</Tab.Panel>
-							<Tab.Panel>
-								<Book userBook={userBook} onRefetch={refetchUserBook} />
-							</Tab.Panel>
-							<Tab.Panel>
-								<Notices notices={notices} />
-							</Tab.Panel>
-						</Tab.Panels>
-					</Tab.Group>
-				</div>
+									: "text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white"
+							}`
+						}>
+							<IconBell className="w-4 h-4" />
+							Notices
+						</Tab>
+					</Tab.List>
+					<Tab.Panels className="p-6 bg-white dark:bg-gray-800 rounded-b-xl">
+						<Tab.Panel>
+							<InformationPanel
+							user={{
+								userid: String(user.userid),
+								username: user.username,
+								displayname: info.displayName,
+								registered: user.registered,
+								birthdayDay: user.birthdayDay,
+								birthdayMonth: user.birthdayMonth,
+							}}
+							isUser={isUser}
+							isAdmin={isAdmin}
+							/>
+						</Tab.Panel>
+						<Tab.Panel>
+							<Activity
+								timeSpent={timeSpent}
+								timesPlayed={timesPlayed}
+								data={data}
+								quotas={quotas}
+								sessionsHosted={sessionsHosted}
+								sessionsAttended={sessionsAttended}
+								avatar={info.avatar}
+								sessions={sessions}
+								notices={notices}
+							/>
+						</Tab.Panel>
+						<Tab.Panel>
+							<Book userBook={userBook} onRefetch={refetchUserBook} />
+						</Tab.Panel>
+						<Tab.Panel>
+							<Notices notices={notices} />
+						</Tab.Panel>
+					</Tab.Panels>
+				</Tab.Group>
 			</div>
+		</div>
 
 
 		</div>

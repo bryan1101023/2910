@@ -310,9 +310,9 @@ const GuestProfile: pageWithLayout<pageProps> = ({ guestUser }) => {
 													{entry.type.charAt(0).toUpperCase() + entry.type.slice(1)}
 												</span>
 												<div className="flex items-center gap-2">
-													<span className="text-xs text-gray-500 dark:text-gray-400">
-														{moment(entry.createdAt).fromNow()}
-													</span>
+												<span className="text-xs text-gray-500 dark:text-gray-400">
+													{moment(entry.createdAt).fromNow()}
+												</span>
 													<button
 														onClick={() => setShowDeleteConfirm(entry.id)}
 														className="p-1 rounded hover:bg-red-100 dark:hover:bg-red-900/20 text-red-500"
@@ -373,9 +373,9 @@ const GuestProfile: pageWithLayout<pageProps> = ({ guestUser }) => {
 													{note.authorName}
 												</span>
 												<div className="flex items-center gap-2">
-													<span className="text-xs text-gray-500 dark:text-gray-400">
+												<span className="text-xs text-gray-500 dark:text-gray-400">
 														{moment(note.createdAt).fromNow()}
-													</span>
+												</span>
 													<button
 														onClick={() => setShowDeleteConfirm(note.id)}
 														className="p-1 rounded hover:bg-red-100 dark:hover:bg-red-900/20 text-red-500"

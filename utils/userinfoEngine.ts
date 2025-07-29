@@ -11,9 +11,9 @@ export async function getUsername(userId: number | bigint) {
 		return cachedUsername as string;
 	} else {
 		try {
-			const username = await getRobloxUsername(Number(userId));
-			usernames.set(Number(userId), username);
-			return username as string;
+		const username = await getRobloxUsername(Number(userId));
+		usernames.set(Number(userId), username);
+		return username as string;
 		} catch (error) {
 			console.error(`Failed to get username for ${userId}, using fallback`);
 			// Return a fallback username
@@ -39,9 +39,9 @@ export async function getDisplayName(userId: number | bigint): Promise<string> {
 		return cachedDisplayName as string;
 	} else {
 		try {
-			const displayName = await getRobloxDisplayName(Number(userId));
-			displaynames.set(Number(userId), displayName);
-			return displayName as string;
+		const displayName = await getRobloxDisplayName(Number(userId));
+		displaynames.set(Number(userId), displayName);
+		return displayName as string;
 		} catch (error) {
 			console.error(`Failed to get display name for ${userId}, using fallback`);
 			// Try to get username as fallback

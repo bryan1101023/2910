@@ -261,11 +261,11 @@ const Views: pageWithLayout<pageProps> = ({ usersInGroup, ranks }) => {
 			cell: (row) => {
 				return (
 					<div className="flex flex-row cursor-pointer" onClick={() => router.push(`/workspace/${router.query.id}/profile/${row.getValue().userId}`)}>
-						<img
-							src={row.getValue().picture!}
+							<img
+								src={row.getValue().picture!}
 							className="w-10 h-10 rounded-lg object-cover border border-gray-200 dark:border-gray-700"
 							alt={`${row.getValue().username}'s avatar`}
-						/>
+							/>
 						<p className="leading-5 my-auto px-2 font-semibold dark:text-white">
 							{row.getValue().username} <br />
 						</p>

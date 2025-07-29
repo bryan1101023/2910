@@ -34,11 +34,6 @@ const Topbar: NextPage = () => {
 					<div className="flex justify-between items-center h-16">
 						<div className="flex items-center space-x-4">
 							<div className="flex items-center space-x-3">
-								<img
-									src='/planetary.svg'
-									className="h-8 w-32 transition-transform duration-200 hover:scale-105"
-									alt="Planetary logo"
-								/>
 								<div className="h-6 w-px bg-gray-300 dark:bg-gray-600" />
 							</div>
 							<ThemeToggle />

@@ -84,38 +84,38 @@ const Book: FC<Props> = ({ userBook, onRefetch }) => {
 							<div>
 								<label htmlFor="type" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
 									Entry Type
-								</label>
-								<select
-									id="type"
-									value={type}
-									onChange={(e) => setType(e.target.value)}
+							</label>
+							<select
+								id="type"
+								value={type}
+								onChange={(e) => setType(e.target.value)}
 									className="block w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm focus:border-orbit focus:ring-orbit transition-colors">
-									<option value="note">Note</option>
-									<option value="warning">Warning</option>
-									<option value="promotion">Promotion</option>
+								<option value="note">Note</option>
+								<option value="warning">Warning</option>
+								<option value="promotion">Promotion</option>
 									<option value="demotion">Demotion</option>
-									<option value="suspension">Suspension</option>
-									<option value="termination">Termination</option>
-								</select>
-							</div>
+								<option value="suspension">Suspension</option>
+								<option value="termination">Termination</option>
+							</select>
+						</div>
 							<div className="flex items-end">
-								<button
-									onClick={addNote}
-									disabled={isSubmitting}
+						<button
+							onClick={addNote}
+							disabled={isSubmitting}
 									className="w-full flex justify-center items-center px-6 py-3 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-orbit hover:bg-orbit/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orbit transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-								>
-									{isSubmitting ? (
-										<>
-											<svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-												<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-												<path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-											</svg>
-											Adding...
-										</>
-									) : (
+						>
+							{isSubmitting ? (
+								<>
+									<svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+										<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+										<path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+									</svg>
+									Adding...
+								</>
+							) : (
 										"Add Entry"
-									)}
-								</button>
+							)}
+						</button>
 							</div>
 						</div>
 						<div>
@@ -168,8 +168,8 @@ const Book: FC<Props> = ({ userBook, onRefetch }) => {
 									<div key={entry.id} className="relative flex gap-4">
 										{/* Timeline Dot */}
 										<div className="flex-shrink-0 w-12 h-12 bg-white dark:bg-gray-800 rounded-full border-4 border-gray-200 dark:border-gray-600 flex items-center justify-center z-10">
-											{getIcon(entry.type)}
-										</div>
+										{getIcon(entry.type)}
+									</div>
 										
 										{/* Entry Content */}
 										<div className="flex-1 bg-gray-50 dark:bg-gray-700 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow">
@@ -206,7 +206,7 @@ const Book: FC<Props> = ({ userBook, onRefetch }) => {
 										</div>
 									</div>
 								))}
-							</div>
+								</div>
 						</div>
 					)}
 				</div>
